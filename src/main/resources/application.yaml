@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    default: "local"
+    group:
+      dev:
+        - local
+      docker:
+        - local
+        - docker
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  datasource:
+    url: jdbc:postgresql://localhost:5437/airlines
+    username: demouser
+    password: qwerty
+
+server:
+  port: 8384
+
+plv8:
+  settings:
+    idField: id
+    idPostfix: _id
+    aggPostfix: _agg
+    schema: public
+    defaultKeys:
+      - id
+    audit:
+      enabled: true
+      schema: audit
+      tableName: write_log
+  defaultSchema: change
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "docker"
+  datasource:
+    url: jdbc:postgresql://database:5432/airlines
+

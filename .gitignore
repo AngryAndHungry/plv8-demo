@@ -1,0 +1,7 @@
+/.idea/*
+/build/
+/.idea/
+/.gradle/
+/.gradle/*
+/build/*
+db/node/dump/tmp/*
